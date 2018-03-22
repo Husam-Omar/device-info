@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "method": {
+      "type": "string",
+      "enum": ["getCpu", "getCpuDetails", "getMemory", "getDiskSpace", "getHostname"]
+    },
+    "server": {
+      "format": "ipv4",
+      "error": "should be valid ip "
+    },
+    "user": {
+      "type": "string",
+      "error": "should be a string"
+    },
+    "password": {
+      "type": "string",
+      "error": "should be a string"
+    },
+    "cpuName": {
+      "type": "number",
+      "maximum": 3,
+      "minimum": 0,
+      "error": "should be a number"
+    }
+  },
+  "required": ["method", "server", "user", "password"],
+  "if": {"properties": {"method": {"pattern": "getCpuDetails"}}},
+  "then": {"required": ["cpuName"]}
+}

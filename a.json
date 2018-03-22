@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "method": {
+      "type": "string",
+      "enum": ["getCpu", "getMemory", "getDiskSpace", "getHostname"]
+    },
+    "server": {
+      "format": "ipv4",
+      "error": "should be valid ip "
+    },
+    "user": {
+      "type": "string",
+      "error": "should be a string"
+    },
+    "password": {
+      "type": "string",
+      "error": "should be a string"
+    }
+  },"required": ["method", "server", "user", "password"]
+}
